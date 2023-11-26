@@ -1,0 +1,94 @@
+#© 2021 Sean Murdock
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prod-stedi-sean
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prod-stedi-sean
+  template:
+    metadata:
+      labels:
+        app: prod-stedi-sean
+    spec:
+      containers:
+        - name: prod-stedi-sean
+          image: gcr.io/cubs-consulting/stedi # This image needs to refer to the NEW Artifact registry repositorry
+          env:
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secrets-sean
+                  key: REDIS_PASS
+            - name: REDIS_HOST
+              value: "redis-stedi-sean"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_DB
+              value: "0"
+            - name: KAFKA_BROKER
+              value: "localhost:9092"
+            - name: TWILIO_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: sean-twilio-dev
+                  key: twilio_token
+          ports:
+            - containerPort: 443
+          resources:
+            limits:
+              cpu: ".5"
+              memory: "500Mi"
+            requests:
+              cpu: ".25"
+              memory: "250Mi"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 4567
+            initialDelaySeconds: 3
+            periodSeconds: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prod-stedi-sean-nodeport
+spec:
+  selector:
+    app: prod-stedi-sean
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 4567
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prod-stedi-sean-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: prod-stedi-sean-public # This IP has not been created yet - need to create first
+    networking.gke.io/managed-certificates: prod-stedi-sean-certificate
+    # kubernetes.io/ingress.allow-http: "false"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: prod-stedi-sean-nodeport # This needs to match line 53
+            port:
+              number: 80
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: prod-stedi-sean-certificate # This needs to match line 68
+spec:
+  domains:
+    - sean.cit262.com # This is a DNS record that has not been created yet - we need to create that first
+    
