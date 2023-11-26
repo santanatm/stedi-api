@@ -1,4 +1,4 @@
-//© 2021 Sean Murdock
+//© 2021 tadeo Murdock
 
 var margin = {top: 10, right: 30, bottom: 30, left: 60};
 var width = 460 - margin.left - margin.right;

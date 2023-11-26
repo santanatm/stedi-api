@@ -1,4 +1,4 @@
-//© 2021 Sean Murdock
+//© 2021 tadeo Murdock
 
 package com.getsimplex.steptimer.service;
 
@@ -11,7 +11,7 @@ import java.util.*;
 import static com.getsimplex.steptimer.utils.JedisData.deleteFromRedis;
 
 /**
- * Created by sean on 6/13/2017.
+ * Created by tadeo on 6/13/2017.
  */
 public class TokenService {
 

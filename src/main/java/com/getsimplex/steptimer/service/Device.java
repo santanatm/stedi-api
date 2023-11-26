@@ -1,4 +1,4 @@
-//© 2021 Sean Murdock
+//© 2021 tadeo Murdock
 
 package com.getsimplex.steptimer.service;
 
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.logging.Logger;
 
 /**
- * Created by sean on 9/7/2016.
+ * Created by tadeo on 9/7/2016.
  */
 public class Device extends UntypedActor {
     private HashMap<String, Session> deviceInterestMap = new HashMap<String,Session>();

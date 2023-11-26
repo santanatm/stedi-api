@@ -1,4 +1,4 @@
-//© 2021 Sean Murdock
+//© 2021 tadeo Murdock
 
     let clicks = 0;
     let stopwatch;

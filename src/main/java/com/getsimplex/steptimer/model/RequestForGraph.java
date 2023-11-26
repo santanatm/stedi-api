@@ -1,11 +1,11 @@
-//© 2021 Sean Murdock
+//© 2021 tadeo Murdock
 
 package com.getsimplex.steptimer.model;
 
 import java.util.List;
 
 /**
- * Created by sean on 10/7/2016.
+ * Created by tadeo on 10/7/2016.
  */
 public class RequestForGraph {
     private String emailAddress;

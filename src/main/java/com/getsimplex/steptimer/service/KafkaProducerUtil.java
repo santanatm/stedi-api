@@ -1,4 +1,4 @@
-//© 2021 Sean Murdock
+//© 2021 tadeo Murdock
 
 package com.getsimplex.steptimer.service;
 import com.getsimplex.steptimer.utils.Configuration;

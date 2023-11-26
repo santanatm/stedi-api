@@ -1,4 +1,4 @@
-//© 2021 Sean Murdock
+//© 2021 tadeo Murdock
 
 package com.getsimplex.steptimer.service;
 
@@ -8,7 +8,7 @@ import com.getsimplex.steptimer.model.BrowserMessage;
 import java.util.logging.Logger;
 
 /**
- * Created by sean on 8/16/2016.
+ * Created by tadeo on 8/16/2016.
  */
 public class BrowserRouter extends UntypedActor {
     private static Logger logger = Logger.getLogger(BrowserRouter.class.getName());

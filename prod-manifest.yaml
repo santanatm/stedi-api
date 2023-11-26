@@ -1,30 +1,30 @@
-#© 2021 Sean Murdock
+#© 2021 tadeo Murdock
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: prod-stedi-sean
+  name: prod-stedi-tadeo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: prod-stedi-sean
+      app: prod-stedi-tadeo
   template:
     metadata:
       labels:
-        app: prod-stedi-sean
+        app: prod-stedi-tadeo
     spec:
       containers:
-        - name: prod-stedi-sean
-          image: gcr.io/cubs-consulting/stedi # This image needs to refer to the NEW Artifact registry repositorry
+        - name: prod-stedi-tadeo
+          image: us-docker.pkg.dev/august-now-404322/tadeo-api/stedi-api:latest # This image needs to refer to the NEW Artifact registry repositorry
           env:
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: redis-secrets-sean
+                  name: redis-secrets-tadeo
                   key: REDIS_PASS
             - name: REDIS_HOST
-              value: "redis-stedi-sean"
+              value: "redis-stedi-tadeo"
             - name: REDIS_PORT
               value: "6379"
             - name: REDIS_DB
@@ -34,7 +34,7 @@ spec:
             - name: TWILIO_AUTH_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: sean-twilio-dev
+                  name: tadeo-twilio-dev
                   key: twilio_token
           ports:
             - containerPort: 443
@@ -55,10 +55,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: prod-stedi-sean-nodeport
+  name: prod-stedi-tadeo-nodeport
 spec:
   selector:
-    app: prod-stedi-sean
+    app: prod-stedi-tadeo
   type: NodePort
   ports:
     - port: 80
@@ -67,10 +67,10 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: prod-stedi-sean-ingress
+  name: prod-stedi-tadeo-ingress
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: prod-stedi-sean-public # This IP has not been created yet - need to create first
-    networking.gke.io/managed-certificates: prod-stedi-sean-certificate
+    kubernetes.io/ingress.global-static-ip-name: prod-stedi-tadeo-public # This IP has not been created yet - need to create first
+    networking.gke.io/managed-certificates: prod-stedi-tadeo-certificate
     # kubernetes.io/ingress.allow-http: "false"
 spec:
   rules:
@@ -80,15 +80,15 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: prod-stedi-sean-nodeport # This needs to match line 53
+            name: prod-stedi-tadeo-nodeport # This needs to match line 53
             port:
               number: 80
 ---
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
-  name: prod-stedi-sean-certificate # This needs to match line 68
+  name: prod-stedi-tadeo-certificate # This needs to match line 68
 spec:
   domains:
-    - sean.cit262.com # This is a DNS record that has not been created yet - we need to create that first
+    - tadeo.cit262.com # This is a DNS record that has not been created yet - we need to create that first
     

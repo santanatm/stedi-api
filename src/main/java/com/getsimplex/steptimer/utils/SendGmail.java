@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class SendGmail {
     public static void send(String toAddress, String messageText, String subject, String name) {
-        final String username = "sean@stedi.me";
+        final String username = "tadeo@stedi.me";
         final String password = "Itsnot@boutme";
 
         Properties prop = new Properties();

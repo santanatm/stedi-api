@@ -7,7 +7,7 @@ import java.lang.reflect.Type;
 import java.util.Map;
 
 /**
- * Created by sean on 9/7/2016.
+ * Created by tadeo on 9/7/2016.
  */
 public class SensorDeserializer {
     private static Type stringStringMap = new TypeToken<Map<String, String>>(){}.getType();

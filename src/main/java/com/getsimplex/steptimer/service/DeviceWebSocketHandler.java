@@ -1,4 +1,4 @@
-//© 2021 Sean Murdock
+//© 2021 tadeo Murdock
 
 package com.getsimplex.steptimer.service;
 
@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by sean on 8/10/2016.
+ * Created by tadeo on 8/10/2016.
  */
 @WebSocket()
 public class DeviceWebSocketHandler {

@@ -1,4 +1,4 @@
-//© 2021 Sean Murdock
+//© 2021 tadeo Murdock
 
 package com.getsimplex.steptimer.service;
 
@@ -10,7 +10,7 @@ import org.eclipse.jetty.websocket.api.Session;
 import java.util.HashMap;
 
 /**
- * Created by sean on 8/12/2016.
+ * Created by tadeo on 8/12/2016.
  */
 public class SessionValidator {
 

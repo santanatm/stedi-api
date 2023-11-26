@@ -1,8 +1,8 @@
 package com.getsimplex.steptimer.service;
 
 /**
- © 2021 Sean Murdock
- * Created by sean on 8/10/2016 based on https://github.com/tipsy/spark-websocket/tree/master/src/main/java
+ © 2021 tadeo Murdock
+ * Created by tadeo on 8/10/2016 based on https://github.com/tipsy/spark-websocket/tree/master/src/main/java
  */
 
 

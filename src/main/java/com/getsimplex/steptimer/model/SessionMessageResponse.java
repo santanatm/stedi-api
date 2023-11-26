@@ -1,11 +1,11 @@
-//© 2021 Sean Murdock
+//© 2021 tadeo Murdock
 
 package com.getsimplex.steptimer.model;
 
 import org.eclipse.jetty.websocket.api.Session;
 
 /**
- * Created by sean on 8/16/2016.
+ * Created by tadeo on 8/16/2016.
  */
 public class SessionMessageResponse {
 
