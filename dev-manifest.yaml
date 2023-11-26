@@ -1,4 +1,4 @@
-#© 2021 Sean Murdock
+#© 2021 tadeo Murdock
 # this is a comment
 # this is the version of YAML we are using with the Kubernetes API
 apiVersion: apps/v1 
@@ -8,7 +8,7 @@ kind: Deployment
 # Metadata is information related to the object we created in Kubernetes
 metadata:
 # The name here is the name of our deployment  
-  name: dev-stedi-sean
+  name: dev-stedi-tadeo
 spec:
 # Replicas refers to the number of pods we deploy
   replicas: 1
@@ -17,29 +17,29 @@ spec:
 # Matchlabels are a label for my selector  
     matchLabels:
 # App is a specific kind of label for my pod
-      app: dev-stedi-sean
+      app: dev-stedi-tadeo
 # The Template describes all the features of my pod
   template:
 # The metadata provides labels for my template  
     metadata:
       labels:
-        app: dev-stedi-sean
+        app: dev-stedi-tadeo
 # The spec refers to the specification of my containers in my pod        
     spec:
 # Containers can have one or more Docker containers in the pod
       containers:
 # The name of the container is specified below      
-        - name: dev-stedi-sean
+        - name: dev-stedi-tadeo
 # The image is a prebuilt file containing the operating system        
-          image: us-docker.pkg.dev/my-devops-team/sean-api/stedi-api:latest # IMAGE NEEDS TO BE ARTIFACT REGISTRY NEW REPOSITORY
+          image: us-docker.pkg.dev/my-devops-team/tadeo-api/stedi-api:latest # IMAGE NEEDS TO BE ARTIFACT REGISTRY NEW REPOSITORY
           env:
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: redis-secrets-sean
+                  name: redis-secrets-tadeo
                   key: REDIS_PASS
             - name: REDIS_HOST
-              value: "redis-stedi-sean"
+              value: "redis-stedi-tadeo"
             - name: REDIS_PORT
               value: "6379"
             - name: REDIS_DB
@@ -49,7 +49,7 @@ spec:
             - name: TWILIO_AUTH_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: sean-twilio-dev
+                  name: tadeo-twilio-dev
                   key: twilio_token
 # The ports is a list of tcp ports the pod listens on
           ports:
@@ -85,10 +85,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: dev-stedi-sean-loadbalancer
+  name: dev-stedi-tadeo-loadbalancer
 spec:
   selector:
-    app: dev-stedi-sean
+    app: dev-stedi-tadeo
   type: LoadBalancer
   ports:
     - port: 80
