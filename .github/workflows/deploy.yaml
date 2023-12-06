@@ -10,7 +10,7 @@ env:
   GKE_CLUSTER: cluster-1    # Add your cluster name here.
   GKE_ZONE: us-central1-a   # Add your cluster zone here.
   DEPLOYMENT_NAME: prod-stedi-tadeo # Add your deployment name here.
-  IMAGE: tadeo-api
+  IMAGE: stedi-api
 
 jobs:
   setup-build-publish-deploy:
